@@ -1,6 +1,9 @@
+import { h, render } from 'preact';
+import Explorer from './components/explorer';
+
 class Builder {
-  setup() {
-    document.write("!");
+  setup({ element }) {
+    render(<Explorer />, document.querySelector(element))
   }
 }
 
