@@ -1,11 +1,16 @@
 import { h, Component } from 'preact';
 
+import BlockList from './block-list';
+import BlockSelected from './block-selected';
+
+
 export default class Explorer extends Component {
-	render() {
-		return (
+  render() {
+    return (
       <div>
-        Hello World
+        <BlockList {...this.props} />
+        <BlockSelected {...this.props} />
       </div>
     )
-	}
+  }
 }

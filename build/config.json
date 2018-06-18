@@ -1,0 +1,17 @@
+{
+  "steps" : [
+    {
+      "title" : "Find flight inspiration",
+      "path" : "/"
+    },{
+      "title" : "Narrow down flight dates",
+      "path" : "/narrow"
+    },{
+      "title" : "Select a flight offer",
+      "path" : "/select"
+    },{
+      "title" : "Extra: Add a hotel",
+      "path" : "/add"
+    }
+  ]
+}

@@ -27,7 +27,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "preact": "^8.2.9"
+    "history": "^4.7.2",
+    "preact": "^8.2.9",
+    "preact-router": "^2.6.1"
   },
   "sideEffects": false
 }

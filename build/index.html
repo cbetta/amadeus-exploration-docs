@@ -9,7 +9,10 @@
     <div id='foo' />
 
     <script type="text/javascript">
-      exploration.setup({ element: '#foo' });
+      exploration.setup({
+        element: '#foo',
+        url: '/config.json'
+      });
     </script>
   </body>
 </html>
