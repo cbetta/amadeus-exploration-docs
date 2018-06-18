@@ -1,0 +1,74 @@
+@import 'variables.scss';
+
+.explorer {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  border: 1px solid $dark-grey;
+
+  :global(.block-list) {
+    flex: 1 100%;
+  }
+
+  :global(.block-selected) {
+    flex: 1 100%;
+  }
+
+  @media all and (min-width: 800px) {
+    :global(.block-list){
+      flex: 1 1;
+    }
+
+    :global(.block-selected){
+      flex: 2 1;
+    }
+  }
+}
+
+.blockList {
+  background-color: $grey;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    flex: 1 1;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    text-decoration: none;
+    line-height: 2em;
+    color: $blue;
+
+    &:visited, &:hover {
+      color: $blue;
+    }
+
+    &:global(.active) {
+      background-color: $blue;
+      color: $white;
+    }
+
+    &:global(.active):visited {
+      color: $white;
+    }
+
+    :global(.rank) {
+      background-color: $white;
+      border-radius: 50%;
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
+      text-align: center;
+      color: $blue;
+      font-size: 1em;
+      margin-right: 1em;
+    }
+  }
+
+  @media all and (min-width: 800px) {
+    & {
+      flex-direction: column;
+    }
+  }
+}

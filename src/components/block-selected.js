@@ -12,9 +12,11 @@ export default class BlockSelected extends Component {
 
   render() {
     return (
-      <Router history={customHistory({  hashType: 'noslash' })}>
-        {this.props.steps.map((step) => this.renderBlock(step))}
-      </Router>
+      <div class='block-selected'>
+        <Router history={customHistory({  hashType: 'noslash' })}>
+          {this.props.steps.map((step) => this.renderBlock(step))}
+        </Router>
+      </div>
     )
   }
 }

@@ -15,6 +15,6 @@ module.exports = merge(common, {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'amadeus-exploration-docs.js'
+    filename: 'exploration-demo.js'
   }
 });

@@ -20,7 +20,31 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      }
+      },
+      {
+        test: /\.(scss|css)$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: { singleton: true, sourceMap: false }
+          },
+          {
+            loader: 'css-loader',
+            options: { modules: true, importLoaders: 1, sourceMap: false }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: false,
+              ctx: { autoprefixer: { browsers: 'last 2 versions' } }
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: false }
+          }
+        ]
+      },
     ]
   }
 };
