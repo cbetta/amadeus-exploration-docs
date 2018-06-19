@@ -1,10 +1,9 @@
-import { h, Component } from 'preact';
-import { Link } from 'preact-router/match';
+import { h, Component } from "preact";
 
 export default class Block extends Component {
   render() {
     return (
-      <div class='block'>{ this.props.title }</div>
-    )
+      <div className="block">{ this.props.title }</div>
+    );
   }
 }

@@ -1,5 +1,5 @@
-import { h, render } from 'preact';
-import Explorer from './components/explorer';
+import { h, render } from "preact";
+import Explorer from "./components/explorer";
 
 class Builder {
   fetchConfig(url) {
@@ -9,7 +9,7 @@ class Builder {
   setup({ element, url }) {
     this.fetchConfig(url).then((config) => {
       let container = document.querySelector(element);
-      render(<Explorer class='exploration-demo' steps={config.steps} />, container)
+      render(<Explorer class="exploration-demo" steps={config.steps} />, container);
     });
   }
 }

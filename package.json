@@ -11,6 +11,9 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "compression-webpack-plugin": "^1.1.11",
     "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-react": "^7.9.1",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
     "sass-loader": "^7.0.3",
@@ -23,7 +26,8 @@
   "scripts": {
     "clean": "rm -f dist/*",
     "build": "webpack --config webpack.prod.js",
-    "prebuild": "npm run clean",
+    "lint": "yarn eslint src/**/*.js",
+    "prebuild": "yarn clean; yarn lint",
     "start": "webpack-dev-server --config webpack.dev.js"
   },
   "author": {
