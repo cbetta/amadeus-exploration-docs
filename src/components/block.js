@@ -1,5 +1,8 @@
 import { h, Component } from "preact";
 
+// Styles
+import style from "../styles/block.scss";
+
 /**
  * Renders the interactive block of code
  */
@@ -12,7 +15,9 @@ export default class Block extends Component {
    */
   render() {
     return (
-      <div className="block">{ this.props.title }</div>
+      <div className={ "block".concat(style.this) }>
+        {this.props.title}
+      </div>
     );
   }
 }

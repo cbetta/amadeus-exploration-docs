@@ -9,7 +9,7 @@ import Block from "./block";
  * Renders all the blocks, with a router to ensure
  * we can only see the selected one
  */
-export default class BlockSelected extends Component {
+export default class Blocks extends Component {
   /**
    * Renders a single block of the docs
    *
@@ -29,7 +29,7 @@ export default class BlockSelected extends Component {
   render() {
     // We use a custom history that does not affect the URL.
     return (
-      <section className="block-selected">
+      <section className="blocks">
         <Router
           history={customHistory()}>
           {this.props.steps.map((step) => this.renderBlock(step))}

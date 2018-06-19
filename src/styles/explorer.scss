@@ -16,11 +16,7 @@
   }
 
   @media all and (min-width: 800px) {
-    :global(.block-list){
-      flex: 1 1;
-    }
-
-    :global(.block-selected){
+    section {
       flex: 2 1;
     }
   }

@@ -2,13 +2,13 @@ import { h, Component } from "preact";
 import { Link } from "preact-router/match";
 
 // Styles
-import style from "../styles/block-list.scss";
+import style from "../styles/steps.scss";
 
 /**
  * Create a navigatable list of steps to take
  * the user through.
  */
-export default class BlockList extends Component {
+export default class Steps extends Component {
 
   /**
    * Initializes the menu collapsed
@@ -35,7 +35,7 @@ export default class BlockList extends Component {
    * @param  {String} klass a class name to pass to the object
    * @return {Component} a Preact component
    */
-  menuItem(step, rank, klass) {
+  step(step, rank, klass) {
     // Append a collapsed state if the menu is collapsed
     if (!this.state.collapsed) {
       klass = klass.concat(" selected");
@@ -58,9 +58,9 @@ export default class BlockList extends Component {
     // We render each item twice, once for on small and
     // once for on large screens
     return (
-      <nav className={ `block-list ${style.this}` }>
-        {this.props.steps.map((step, rank) => this.menuItem(step, rank, "dropdown"))}
-        {this.props.steps.map((step, rank) => this.menuItem(step, rank, "list"))}
+      <nav className={ `exploration-demo-steps ${style.this}` }>
+        {this.props.steps.map((step, rank) => this.step(step, rank, "dropdown"))}
+        {this.props.steps.map((step, rank) => this.step(step, rank, "list"))}
       </nav>
     );
   }
