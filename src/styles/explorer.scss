@@ -1,23 +1,26 @@
-@import 'variables.scss';
+@import 'variables';
 
 .this {
-  display: flex;
-  flex-direction: row;
-  flex-flow: row wrap;
   border: 1px solid $dark-grey;
+  display: flex;
+  flex-flow: row wrap;
 
-  nav {
+  :global(.exploration-demo-steps) {
     flex: 1 100%;
   }
 
-  section {
+  :global(.exploration-demo-blocks) {
     flex: 1 100%;
     padding: 1em;
   }
 
   @media all and (min-width: 800px) {
-    section {
+    :global(.exploration-demo-steps) {
       flex: 2 1;
+    }
+
+    :global(.exploration-demo-blocks) {
+      flex: 3 1;
     }
   }
 }

@@ -29,7 +29,7 @@ export default class Blocks extends Component {
   render() {
     // We use a custom history that does not affect the URL.
     return (
-      <section className="blocks">
+      <section className="exploration-demo-blocks">
         <Router
           history={customHistory()}>
           {this.props.steps.map((step) => this.renderBlock(step))}

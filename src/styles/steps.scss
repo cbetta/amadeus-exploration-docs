@@ -1,4 +1,4 @@
-@import 'variables.scss';
+@import 'variables';
 
 .this {
   background-color: $grey;
@@ -6,22 +6,46 @@
   flex-direction: column;
 
   a {
-    flex: 1 1;
-    padding: 1em;
     display: none;
+    color: $blue;
+    flex: 1 1;
     flex-direction: row;
     flex-wrap: nowrap;
-    text-decoration: none;
     line-height: 2em;
-    color: $blue;
+    padding: 1em;
+    text-decoration: none;
 
-    &:visited, &:hover {
+    &:visited,
+    &:hover {
       color: $blue;
     }
 
     &:global(.active) {
       background-color: $blue;
       color: $white;
+
+      &:visited {
+        color: $white;
+      }
+    }
+
+    :global(.rank) {
+      background-color: $white;
+      border-radius: 50%;
+      color: $blue;
+      font-size: 1em;
+      height: 2em;
+      line-height: 2em;
+      margin-right: 1em;
+      text-align: center;
+      width: 2em;
+    }
+
+    :global(.chevron) {
+      display: none;
+      font-size: 1em;
+      margin-left: 0.5em;
+      text-align: right;
     }
 
     &:global(.dropdown.active) {
@@ -31,29 +55,6 @@
         display: block;
         flex: 1 auto;
       }
-    }
-
-    &:global(.active):visited {
-      color: $white;
-    }
-
-    :global(.chevron) {
-      display: none;
-      margin-left: 0.5em;
-      font-size: 1em;
-      text-align: right !important;
-    }
-
-    :global(.rank) {
-      background-color: $white;
-      border-radius: 50%;
-      width: 2em;
-      height: 2em;
-      line-height: 2em;
-      text-align: center;
-      color: $blue;
-      font-size: 1em;
-      margin-right: 1em;
     }
 
     &:global(.list.selected) {
@@ -67,16 +68,19 @@
 
   @media all and (min-width: 800px) {
     & {
-      flex: 1 1 !important;
+      flex: 1 1;
       flex-direction: column;
     }
 
-    a:global(.list) {
-      display: flex;
-    }
+    a {
+      &:global(.list) {
+        display: flex;
+      }
 
-    a:global(.dropdown), a:global(.dropdown.active) {
-      display: none;
+      &:global(.dropdown),
+      &:global(.dropdown.active) {
+        display: none;
+      }
     }
   }
 }

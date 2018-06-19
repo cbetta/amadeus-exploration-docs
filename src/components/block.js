@@ -16,7 +16,13 @@ export default class Block extends Component {
   render() {
     return (
       <div className={ "block".concat(style.this) }>
-        {this.props.title}
+        <header>
+          {this.props.title}
+        </header>
+        <section>
+        </section>
+        <section>
+        </section>
       </div>
     );
   }

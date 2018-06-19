@@ -19,7 +19,7 @@ export default class Explorer extends Component {
    */
   render() {
     return (
-      <div className={ `exploration-demo ${style.this}` }>
+      <div className={style.this.concat(" exploration-demo")}>
         <Steps {...this.props} />
         <Blocks {...this.props} />
       </div>

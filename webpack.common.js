@@ -1,4 +1,5 @@
 const path = require('path');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   // input
@@ -19,6 +20,15 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "eslint-loader",
+      },
+      {
+        enforce: "pre",
+        test: /\s[a|c]ss$/,
+        exclude: /node_modules/,
+        loader: 'sasslint',
+        options: {
+          failOnWarning: true
+        }
       },
       {
         test: /\.js$/,
@@ -52,5 +62,10 @@ module.exports = {
         ]
       },
     ]
-  }
+  },
+
+  // Plugins
+  plugins: [
+    new StyleLintPlugin(),
+  ],
 };

@@ -30,7 +30,7 @@ class Builder {
   setup({ element, url }) {
     this.fetchConfig(url).then((config) => {
       let container = document.querySelector(element);
-      render(<Explorer class="exploration-demo" steps={config.steps} />, container);
+      render(<Explorer className="exploration-demo" steps={config.steps} />, container);
     });
   }
 }

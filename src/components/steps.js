@@ -9,22 +9,32 @@ import style from "../styles/steps.scss";
  * the user through.
  */
 export default class Steps extends Component {
-
   /**
-   * Initializes the menu collapsed
+   * Initializes the menu isMenuCollapsed
    */
   constructor() {
     super();
-    this.state = { collapsed: true };
+    this.state = { isMenuCollapsed: true, stepSelected: 0 };
   }
 
   /**
    * Toggles the dropdown menu on small screens
    */
-  toggleMenu() {
-    this.setState({
-      collapsed: !this.state.collapsed
-    });
+  toggleMenu(rank) {
+    return () => {
+      // toggle collapse state
+      let collapse = !this.state.isMenuCollapsed;
+      // toggle this back if we are in wide screen mode and directly
+      // set a new page
+      if (rank !== this.state.stepSelected && this.state.isMenuCollapsed) {
+        collapse = !collapse;
+      }
+
+      this.setState({
+        isMenuCollapsed: collapse,
+        stepSelected: rank
+      });
+    };
   }
 
   /**
@@ -36,13 +46,17 @@ export default class Steps extends Component {
    * @return {Component} a Preact component
    */
   step(step, rank, klass) {
-    // Append a collapsed state if the menu is collapsed
-    if (!this.state.collapsed) {
+    // Append a isMenuCollapsed state if the menu is isMenuCollapsed
+    if (!this.state.isMenuCollapsed) {
       klass = klass.concat(" selected");
     }
 
     return (
-      <Link onclick={this.toggleMenu.bind(this)} className={klass} activeClassName="active" href={step.path}>
+      <Link onclick={this.toggleMenu.bind(this)(rank)}
+        className={klass}
+        activeClassName="active"
+        href={step.path}>
+
         <div className="rank">{ rank+1 }</div>
         <div className="title">{ step.title }</div>
         <div className="chevron">&#9660;</div>
@@ -58,9 +72,11 @@ export default class Steps extends Component {
     // We render each item twice, once for on small and
     // once for on large screens
     return (
-      <nav className={ `exploration-demo-steps ${style.this}` }>
-        {this.props.steps.map((step, rank) => this.step(step, rank, "dropdown"))}
-        {this.props.steps.map((step, rank) => this.step(step, rank, "list"))}
+      <nav className={style.this.concat(" exploration-demo-steps")}>
+        {this.props.steps.map((step, rank) =>
+          this.step(step, rank, "dropdown"))}
+        {this.props.steps.map((step, rank) =>
+          this.step(step, rank, "list"))}
       </nav>
     );
   }
