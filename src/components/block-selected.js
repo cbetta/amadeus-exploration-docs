@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import { Link } from 'preact-router/match';
 import Router from 'preact-router';
-import customHistory from 'history/createHashHistory';
+import customHistory from 'history/createMemoryHistory';
 
 import Block from './block';
 
@@ -12,11 +12,12 @@ export default class BlockSelected extends Component {
 
   render() {
     return (
-      <div class='block-selected'>
-        <Router history={customHistory({  hashType: 'noslash' })}>
+      <section class='block-selected'>
+        <Router
+          history={customHistory()}>
           {this.props.steps.map((step) => this.renderBlock(step))}
         </Router>
-      </div>
+      </section>
     )
   }
 }

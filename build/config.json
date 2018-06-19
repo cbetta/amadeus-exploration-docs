@@ -4,13 +4,13 @@
       "title" : "Find flight inspiration",
       "path" : "/"
     },{
-      "title" : "Narrow down flight dates",
+      "title" : "Narrow down dates",
       "path" : "/narrow"
     },{
-      "title" : "Select a flight offer",
+      "title" : "Select flight offer",
       "path" : "/select"
     },{
-      "title" : "Extra: Add a hotel",
+      "title" : "Extra: Add hotel",
       "path" : "/add"
     }
   ]

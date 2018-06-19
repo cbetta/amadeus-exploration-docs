@@ -6,12 +6,13 @@
   flex-flow: row wrap;
   border: 1px solid $dark-grey;
 
-  :global(.block-list) {
+  nav {
     flex: 1 100%;
   }
 
-  :global(.block-selected) {
+  section {
     flex: 1 100%;
+    padding: 1em;
   }
 
   @media all and (min-width: 800px) {
@@ -33,7 +34,7 @@
   a {
     flex: 1 1;
     padding: 1em;
-    display: flex;
+    display: none;
     flex-direction: row;
     flex-wrap: nowrap;
     text-decoration: none;
@@ -49,8 +50,24 @@
       color: $white;
     }
 
+    &:global(.dropdown.active) {
+      display: flex;
+
+      :global(.chevron) {
+        display: block;
+        flex: 1 auto;
+      }
+    }
+
     &:global(.active):visited {
       color: $white;
+    }
+
+    :global(.chevron) {
+      display: none;
+      margin-left: 0.5em;
+      font-size: 1em;
+      text-align: right !important;
     }
 
     :global(.rank) {
@@ -64,11 +81,27 @@
       font-size: 1em;
       margin-right: 1em;
     }
+
+    &:global(.list.selected) {
+      display: flex;
+    }
+
+    &:global(.dropdown.selected) {
+      display: none;
+    }
   }
 
   @media all and (min-width: 800px) {
     & {
       flex-direction: column;
+    }
+
+    a:global(.list) {
+      display: flex;
+    }
+
+    a:global(.dropdown), a:global(.dropdown.active) {
+      display: none;
     }
   }
 }

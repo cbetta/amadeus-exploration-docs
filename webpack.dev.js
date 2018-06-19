@@ -11,7 +11,8 @@ module.exports = merge(common, {
       errors: true
     },
     open: true,
-    progress: true
+    progress: true,
+    disableHostCheck: true
   },
   output: {
     path: path.resolve(__dirname, 'build'),
