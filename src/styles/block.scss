@@ -1,1 +1,32 @@
 @import 'variables';
+
+.this {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  height: 100%;
+  min-height: 250px;
+
+  header {
+    border-top: 1px solid $grey;
+    border-bottom: 1px solid $grey;
+    border-right: 1px solid $grey;
+    flex: 1 1;
+    padding: 1em;
+    max-height: 1em;
+  }
+
+  section {
+    flex: 4 1;
+    padding: 1em;
+    border-bottom: 1px solid $grey;
+    border-right: 1px solid $grey;
+  }
+
+  footer {
+    flex: 4 1;
+    padding: 1em;
+    border-bottom: 1px solid $grey;
+    border-right: 1px solid $grey;
+  }
+}

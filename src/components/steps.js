@@ -57,7 +57,7 @@ export default class Steps extends Component {
         activeClassName="active"
         href={step.path}>
 
-        <div className="rank">{ rank+1 }</div>
+        <div className="rank"><span>{ rank+1 }</span></div>
         <div className="title">{ step.title }</div>
         <div className="chevron">&#9660;</div>
       </Link>
@@ -73,10 +73,10 @@ export default class Steps extends Component {
     // once for on large screens
     return (
       <nav className={style.this.concat(" exploration-demo-steps")}>
-        {this.props.steps.map((step, rank) =>
-          this.step(step, rank, "dropdown"))}
-        {this.props.steps.map((step, rank) =>
-          this.step(step, rank, "list"))}
+        {Object.keys(this.props.steps).map((id, rank) =>
+          this.step(this.props.steps[id], rank, "dropdown"))}
+        {Object.keys(this.props.steps).map((id, rank) =>
+          this.step(this.props.steps[id], rank, "list"))}
       </nav>
     );
   }

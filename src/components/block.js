@@ -15,14 +15,18 @@ export default class Block extends Component {
    */
   render() {
     return (
-      <div className={ "block".concat(style.this) }>
+      <div className={ style.this.concat(" exploration-demo-block") }>
         <header>
-          {this.props.title}
+          {this.props.description.text}
         </header>
         <section>
+          { this.props.code && this.props.code.rb &&
+            <code>{this.props.code.rb}</code>
+          }
         </section>
-        <section>
-        </section>
+        <footer>
+        Footer
+        </footer>
       </div>
     );
   }

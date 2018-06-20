@@ -10,7 +10,7 @@
 <script type="text/javascript">
   exploration.setup({
     element: '#target',
-    url: 'http://exmaple.com/config.json'
+    url: 'http://exmaple.com/path/to/config'
   });
 </script>
 ```

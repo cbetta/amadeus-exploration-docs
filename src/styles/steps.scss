@@ -1,7 +1,7 @@
 @import 'variables';
 
 .this {
-  background-color: $grey;
+  background-color: $white;
   display: flex;
   flex-direction: column;
 
@@ -14,10 +14,46 @@
     line-height: 2em;
     padding: 1em;
     text-decoration: none;
+    border-bottom: 1px solid $grey;
+
+    &:last-child {
+      border-bottom: 0;
+    }
 
     &:visited,
     &:hover {
       color: $blue;
+    }
+
+    &:hover {
+      background-color: $pure-white;
+    }
+
+    :global(.rank) {
+      margin-right: 1em;
+      min-width: 2em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      span {
+        background-color: $blue;
+        color: $pure-white;
+        line-height: 2em;
+        height: 2em;
+        width: 2em;
+        font-size: 1em;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 1em;
+      }
+    }
+
+    :global(.chevron) {
+      display: none;
+      font-size: 1em;
+      margin-left: 0.5em;
+      text-align: right;
     }
 
     &:global(.active) {
@@ -27,25 +63,13 @@
       &:visited {
         color: $white;
       }
-    }
 
-    :global(.rank) {
-      background-color: $white;
-      border-radius: 50%;
-      color: $blue;
-      font-size: 1em;
-      height: 2em;
-      line-height: 2em;
-      margin-right: 1em;
-      text-align: center;
-      width: 2em;
-    }
-
-    :global(.chevron) {
-      display: none;
-      font-size: 1em;
-      margin-left: 0.5em;
-      text-align: right;
+      :global(.rank) {
+        span {
+          background-color: $white;
+          color: $blue;
+        }
+      }
     }
 
     &:global(.dropdown.active) {
@@ -80,6 +104,10 @@
       &:global(.dropdown),
       &:global(.dropdown.active) {
         display: none;
+      }
+
+      :global(.title) {
+        line-height: 1.3em;
       }
     }
   }

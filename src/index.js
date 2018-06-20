@@ -8,31 +8,32 @@ import Explorer from "./components/explorer";
  * to call `explorer.setup()` to bind a new widget to the
  * browser.
  */
-class Builder {
+class ExplorationDemo {
   /**
-   * Fetches the config for this widget from a remote JSON file,
-   * which includes the steps, the code samples, and more.
-   *
-   * @param  {String} url the URL for the JSON file.
-   * @return {Object}     the configuration for this widget
+   * Initializes the demo object
    */
-  fetchConfig(url) {
-    return fetch(url).then(response => response.json());
+  constructor(config) {
+    this.config = config;
   }
 
   /**
    * Sets up the widget and binds it to an element in the browser.
-   *
-   * @param  {String} element a query string describing the target element by
-   *   ID or class name.
-   * @param  {String} url     the URL for the config JSON file.
    */
-  setup({ element, url }) {
-    this.fetchConfig(url).then((config) => {
-      let container = document.querySelector(element);
-      render(<Explorer className="exploration-demo" steps={config.steps} />, container);
-    });
+  bind() {
+    let container = document.querySelector(this.config.element);
+    let explorer = <Explorer {...this.config} />;
+    render(explorer, container);
+  }
+
+  /**
+   * Initializes a new Exploration demo and binds it to the
+   * UI.
+   */
+  static setup(config) {
+    new ExplorationDemo(config).bind();
   }
 }
 
-export default new Builder();
+
+
+export default ExplorationDemo;

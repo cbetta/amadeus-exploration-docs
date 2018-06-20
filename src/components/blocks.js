@@ -16,8 +16,17 @@ export default class Blocks extends Component {
    * @param  {Object} step all the data for the step
    * @return {Component} a Preact component
    */
-  renderBlock(step) {
-    return <Block {...step} />;
+  renderBlock(id, step) {
+    return <Block id={id} {...step} />;
+  }
+
+  /**
+   * Lazy loads the code for this page
+   *
+   * @param  {Object} e the route change event
+   */
+  handleRoute(e) {
+    this.props.loadPage(e.current.attributes.id);
   }
 
   /**
@@ -31,8 +40,10 @@ export default class Blocks extends Component {
     return (
       <section className="exploration-demo-blocks">
         <Router
+          onChange={this.handleRoute.bind(this)}
           history={customHistory()}>
-          {this.props.steps.map((step) => this.renderBlock(step))}
+          {Object.keys(this.props.steps).map((id) =>
+            this.renderBlock(id, this.props.steps[id]))}
         </Router>
       </section>
     );

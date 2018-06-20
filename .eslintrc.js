@@ -39,8 +39,7 @@ module.exports = {
       "error",
       "always"
     ],
-    "react/prop-types": [
-      0
-    ]
+    "react/prop-types": [0],
+    "react/no-deprecated": [0]
   }
 };
