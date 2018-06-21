@@ -6,6 +6,7 @@
   grid-template-areas:
     "header"
     "code"
+    "bar"
     "output";
   height: 100%;
 
@@ -18,12 +19,19 @@
     color: $white;
   }
 
+  :global(.bar) {
+    grid-area: bar;
+    min-height: 1em;
+    background-color: $dark-grey;
+  }
+
   :global(.code) {
     grid-area: code;
     overflow: auto;
 
     pre {
       margin: 0;
+      padding: 1em !important;
       font-size: 1.1em;
     }
 
@@ -39,7 +47,8 @@
 
     pre {
       margin-top: 0;
-      font-size: 0.9em;
+      margin-bottom: 0;
+      padding: 1em !important;
     }
   }
 

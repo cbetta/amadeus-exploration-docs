@@ -1,8 +1,21 @@
 import { h, Component } from "preact";
-import { HighLight, THEME } from "preact-highlight";
+import SyntaxHighlighter, { registerLanguage } from "react-syntax-highlighter/light";
+import js from "react-syntax-highlighter/languages/hljs/javascript";
+import rb from "react-syntax-highlighter/languages/hljs/ruby";
+import java from "react-syntax-highlighter/languages/hljs/java";
+import py from "react-syntax-highlighter/languages/hljs/python";
+
+import { atomOneLight as light } from "react-syntax-highlighter/styles/hljs";
+import { atomOneDark as dark } from "react-syntax-highlighter/styles/hljs";
 
 // Styles
 import style from "../styles/block.scss";
+
+// Register supported languages
+registerLanguage("js", js);
+registerLanguage("rb", rb);
+registerLanguage("py", py);
+registerLanguage("java", java);
 
 /**
  * Renders the interactive block of code
@@ -20,20 +33,19 @@ export default class Block extends Component {
         <header>
           {this.props.description.text}
         </header>
-        <section className='code'>
+        <section className="code">
           { this.props.code && this.props.code.rb &&
-            <HighLight className='code'
-              code={this.props.code.rb}
-              language="ruby"
-              theme={THEME.atomOneLight} />
+            <SyntaxHighlighter className="code"
+              language="rb"
+              style={light} >{this.props.code.rb}</SyntaxHighlighter>
           }
         </section>
-        <section className='output'>
+        <section className="bar"></section>
+        <section className="output">
           { this.props.output &&
-            <HighLight className='code'
-              code={this.props.output}
-              language="json"
-              theme={THEME.atomOneDark} />
+            <SyntaxHighlighter className="code"
+              language="js"
+              style={dark} >{this.props.output}</SyntaxHighlighter>
           }
         </section>
       </div>
