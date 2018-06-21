@@ -40,7 +40,9 @@ export default class Block extends Component {
               style={light} >{this.props.code.rb}</SyntaxHighlighter>
           }
         </section>
-        <section className="bar"></section>
+        <section className="bar">
+          <span className='active'>Output</span>
+        </section>
         <section className="output">
           { this.props.output &&
             <SyntaxHighlighter className="code"

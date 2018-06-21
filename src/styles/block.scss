@@ -11,18 +11,31 @@
   height: 100%;
 
   header {
-    font-size: 0.9em;
+    font-size: 0.8em;
+    line-height: 0.8em;
     grid-area: header;
     padding: 1em;
-    max-height: 1em;
     background-color: $light-blue;
-    color: $white;
+    color: $dark-grey;
   }
 
   :global(.bar) {
     grid-area: bar;
     min-height: 1em;
     background-color: $dark-grey;
+
+    span {
+      display: inline-block;
+      font-size: 0.8em;
+      color: $white;
+      padding: 0.6em 1em;
+      border-right: 2px solid lighten($dark-grey, 10%);
+      cursor: pointer;
+
+      &:global(.active) {
+        background-color: lighten($dark-grey, 10%);
+      }
+    }
   }
 
   :global(.code) {
@@ -54,6 +67,8 @@
 
   @media all and (min-width: 800px) {
     header {
+      font-size: 1em;
+      line-height: 1em;
       background-color: $blue;
       color: $pure-white;
     }
