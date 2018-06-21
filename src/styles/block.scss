@@ -1,32 +1,52 @@
 @import 'variables';
 
 .this {
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
+  display: grid;
+  grid-column-gap: 0;
+  grid-template-areas:
+    "header"
+    "code"
+    "output";
   height: 100%;
-  min-height: 250px;
 
   header {
-    border-top: 1px solid $grey;
-    border-bottom: 1px solid $grey;
-    border-right: 1px solid $grey;
-    flex: 1 1;
+    font-size: 0.9em;
+    grid-area: header;
     padding: 1em;
     max-height: 1em;
+    background-color: $light-blue;
+    color: $white;
   }
 
-  section {
-    flex: 4 1;
-    padding: 1em;
-    border-bottom: 1px solid $grey;
-    border-right: 1px solid $grey;
+  :global(.code) {
+    grid-area: code;
+    overflow: auto;
+
+    pre {
+      margin: 0;
+      font-size: 1.1em;
+    }
+
+    :global(.hljs) {
+      padding: 1em 0 1em 1.1em;
+    }
   }
 
-  footer {
-    flex: 4 1;
-    padding: 1em;
-    border-bottom: 1px solid $grey;
-    border-right: 1px solid $grey;
+  :global(.output) {
+    grid-area: output;
+    overflow: auto;
+    border-bottom: 0.5em solid $dark-grey;
+
+    pre {
+      margin-top: 0;
+      font-size: 0.9em;
+    }
+  }
+
+  @media all and (min-width: 800px) {
+    header {
+      background-color: $blue;
+      color: $pure-white;
+    }
   }
 }

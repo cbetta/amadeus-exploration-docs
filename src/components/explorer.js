@@ -1,8 +1,9 @@
 import { h, Component } from "preact";
 
 // Local imports
-import Steps from "./steps";
 import Blocks from "./blocks";
+import Config from "./config";
+import Steps from "./steps";
 
 // CSS Styles
 import style from "../styles/explorer.scss";
@@ -11,60 +12,28 @@ import style from "../styles/explorer.scss";
  * An interactive documentation explorer.
  */
 export default class Explorer extends Component {
+  /**
+   * By default we assume we have not loaded any data.
+   */
   constructor(props) {
     super(props);
-    this.state = {
-      loaded: false
-    };
+    this.state = { loaded: false };
+    this.config = new Config(this);
   }
 
+  /**
+   * Once the component mounts, we try to load the config object
+   */
   componentDidMount() {
-    this.fetchConfig();
+    this.config.load();
   }
 
-  fetchConfig() {
-    return fetch(this.props.url.concat("/config.json"))
-      .then(data => data.json())
-      .then(config => Object.assign(this.props, config))
-      .then(this.setLoaded.bind(this));
-  }
-
-  setLoaded() {
-    this.setState({
-      loaded: true
-    });
-  }
-
-  loadPage(id) {
-    this.fetchCode(id);
-  }
-
-  fetchCode(id) {
-    for (var ext in this.props.languages) {
-      this.fetchLanguage(id, ext);
-    }
-  }
-
-  fetchLanguage(id, ext) {
-    fetch(this.props.url.concat(`/code/${id}.${ext}`))
-      .then(this.handleErrors.bind(this))
-      .then(data => data.text())
-      .then(this.storeLanguage(id, ext).bind(this))
-      .catch(() => {});
-
-  }
-
-  handleErrors(response) {
-    if (!response.ok) { throw Error(response.statusText); }
-    return response;
-  }
-
-  storeLanguage(id, ext) {
-    return (code) => {
-      this.props.steps[id].code = this.props.steps[id].code || {};
-      this.props.steps[id].code[ext] = code;
-      this.forceUpdate();
-    };
+  /**
+   * When a step is loaded, load the code samples and output for
+   * that step.
+   */
+  stepDidLoad(stepId) {
+    this.config.loadStep(stepId);
   }
 
   /**
@@ -78,7 +47,8 @@ export default class Explorer extends Component {
       <div className={style.this.concat(" exploration-demo")}>
         {this.state.loaded && <Steps {...this.props} />}
         {this.state.loaded &&
-          <Blocks {...this.props} loadPage={this.loadPage.bind(this)} />}
+          <Blocks {...this.props}
+            loadStep={this.stepDidLoad.bind(this)} />}
       </div>
     );
   }

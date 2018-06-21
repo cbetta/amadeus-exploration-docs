@@ -26,7 +26,8 @@ export default class Blocks extends Component {
    * @param  {Object} e the route change event
    */
   handleRoute(e) {
-    this.props.loadPage(e.current.attributes.id);
+    let stepId = e.current.attributes.id;
+    this.props.loadStep(stepId);
   }
 
   /**
