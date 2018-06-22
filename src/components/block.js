@@ -27,6 +27,12 @@ export default class Block extends Component {
     Cookie.set("exploration-demo:language", id);
   }
 
+  className() {
+    let klass = style.this.concat(" exploration-demo-block");
+    if (this.props.code != undefined) { klass += " loaded"; }
+    return klass;
+  }
+
   /**
    * Returns the block rendered in its entirity with all
    * interactivity.
@@ -35,7 +41,7 @@ export default class Block extends Component {
    */
   render() {
     return (
-      <div className={ style.this.concat(" exploration-demo-block") }>
+      <div className={ this.className() }>
         <BlockHeader {...this.props}
           language={this.state.language}
           changeLanguage={this.changeLanguage.bind(this) }/>

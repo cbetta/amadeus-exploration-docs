@@ -9,6 +9,7 @@
     "bar"
     "output";
   height: 100%;
+  background-color: $dark-grey;
 
   header {
     font-size: 0.8em;
@@ -16,12 +17,14 @@
     grid-area: header;
     background-color: $light-blue;
     color: $dark-grey;
+    max-height: 3em;
   }
 
   :global(.bar) {
     grid-area: bar;
     min-height: 1em;
     background-color: $dark-grey;
+    max-height: 2em;
 
     span {
       display: inline-block;
@@ -38,6 +41,7 @@
   }
 
   :global(.code) {
+    background-color: $white;
     grid-area: code;
     overflow: auto;
 

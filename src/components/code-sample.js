@@ -14,15 +14,24 @@ registerLanguage("rb", rb);
 registerLanguage("py", py);
 registerLanguage("java", java);
 
+// Sample code
+let sample = "amadeus.shopping.flight_destinations.get(\n  origin: 'PAR'\n)\n";
+
 export default class CodeSample extends Component {
+  code() {
+    let code = sample;
+    if (this.props.code &&  this.props.code[this.props.language]) {
+      code = this.props.code[this.props.language];
+    }
+    return code;
+  }
+
   render() {
     return (
       <section className="code">
-        { this.props.code && this.props.code[this.props.language] &&
-          <SyntaxHighlighter className="code"
-            language={this.props.language}
-            style={light} >{this.props.code[this.props.language]}</SyntaxHighlighter>
-        }
+        <SyntaxHighlighter className="code"
+          language={this.props.language}
+          style={light} >{this.code()}</SyntaxHighlighter>
       </section>
     );
   }

@@ -47,12 +47,13 @@ export default class BlockHeader extends Component {
   render() {
     return (
       <header
-        className={style.this}
-        onMouseEnter={ this.showLanguageDropdown.bind(this) }
-        onMouseUp={ this.showLanguageDropdown.bind(this) }
-        onMouseLeave={ this.hideLanguageDropdown.bind(this) }>
+        className={style.this}>
         <div className='description'>{this.props.description.text}</div>
-        <div className={ this.languagesDropdownClass() }>
+        <div
+          onMouseEnter={ this.showLanguageDropdown.bind(this) }
+          onMouseUp={ this.showLanguageDropdown.bind(this) }
+          onMouseLeave={ this.hideLanguageDropdown.bind(this) }
+          className={ this.languagesDropdownClass() }>
           <span>
             &#9662; { this.props.languages[this.props.language] }
           </span>

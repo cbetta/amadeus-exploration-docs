@@ -8,16 +8,15 @@ import { atomOneDark as dark } from "react-syntax-highlighter/styles/hljs";
 // Register supported languages
 registerLanguage("js", js);
 
+let sample = "{\n\n\n\n\n\n\n}";
 
 export default class OutputSample extends Component {
   render() {
     return (
       <section className="output">
-        { this.props.output &&
-          <SyntaxHighlighter className="code"
-            language="js"
-            style={dark} >{this.props.output}</SyntaxHighlighter>
-        }
+        <SyntaxHighlighter className="code"
+          language="js"
+          style={dark} >{this.props.output || sample }</SyntaxHighlighter>
       </section>
     );
   }
