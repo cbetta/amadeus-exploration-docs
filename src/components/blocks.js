@@ -26,8 +26,6 @@ export default class Blocks extends Component {
 
   /**
    * Lazy loads the code for this page
-   *
-   * @param  {Object} e the route change event
    */
   handleRoute(e) {
     let stepId = e.current.attributes.id;
@@ -37,8 +35,6 @@ export default class Blocks extends Component {
   /**
    * Renders a router with every block for the docs
    * as children.
-   *
-   * @return {Component} a Preact component
    */
   render() {
     // We use a custom history that does not affect the URL.

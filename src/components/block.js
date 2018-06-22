@@ -10,42 +10,47 @@ import NextButton from "./next-button";
 // Styles
 import style from "../styles/block.scss";
 
-
 /**
  * Renders the interactive block of code
  */
 export default class Block extends Component {
+  /**
+   * Initializes a Block
+   */
   constructor(props) {
     super(props);
-    let defaultLanguage =
-      Cookie.get("exploration-demo:language") ||
-      props.defaultLanguage;
-    this.state = { language: defaultLanguage };
+    this.state = {};
+    this.initState(props);
   }
 
-  changeLanguage(id) {
-    this.setState ({ language: id });
-    Cookie.set("exploration-demo:language", id);
+  /**
+   * Initializes the state of this block by determining the
+   * prefered language from a cookie, or from the default setting
+   */
+  initState(props) {
+    let language =
+      Cookie.get("exploration-demo:language") || props.defaultLanguage;
+    this.setState({ language: language });
   }
 
-  className() {
-    let klass = style.this.concat(" exploration-demo-block");
-    if (this.props.code != undefined) { klass += " loaded"; }
-    return klass;
+  /**
+   * Changes the selected language and stores it as a cookie
+   */
+  setLanguage(language) {
+    this.setState ({ language: language });
+    Cookie.set("exploration-demo:language", language);
   }
 
   /**
    * Returns the block rendered in its entirity with all
    * interactivity.
-   *
-   * @return {Component} a Preact component
    */
   render() {
     return (
-      <div className={ this.className() }>
+      <div className={ style.this.concat(" exploration-demo-block") }>
         <BlockHeader {...this.props}
           language={this.state.language}
-          changeLanguage={this.changeLanguage.bind(this) }/>
+          setLanguage={this.setLanguage.bind(this) }/>
         <CodeSample {...this.props} language={this.state.language} />
         <section className="bar">
           <span className='active'>Output</span>

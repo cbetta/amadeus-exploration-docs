@@ -1,7 +1,14 @@
 import { h, Component } from "preact";
 import { Link } from "preact-router";
 
+/**
+ * The button that allows a user to skip to the next step
+ */
 export default class NextButton extends Component {
+  /**
+   * Check if the button has a URL instead of PATH and then redirect
+   * the user if needed.
+   */
   linkExternal() {
     if (this.props.next.path == undefined &&
       this.props.next.url) {
@@ -9,6 +16,9 @@ export default class NextButton extends Component {
     }
   }
 
+  /**
+   * Render a button
+   */
   render() {
     return (
       <Link

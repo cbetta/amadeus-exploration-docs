@@ -17,7 +17,13 @@ registerLanguage("java", java);
 // Sample code
 let sample = "amadeus.shopping.flight_destinations.get(\n  origin: 'PAR'\n)\n";
 
+/**
+ * Renders a code sample
+ */
 export default class CodeSample extends Component {
+  /**
+   * Default to the code sample so the UI doesn't blink as much
+   */
   code() {
     let code = sample;
     if (this.props.code &&  this.props.code[this.props.language]) {
@@ -26,6 +32,9 @@ export default class CodeSample extends Component {
     return code;
   }
 
+  /**
+   * Render the code sample
+   */
   render() {
     return (
       <section className="code">
