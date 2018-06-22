@@ -1,26 +1,27 @@
 import { h, Component } from "preact";
-import SyntaxHighlighter, { registerLanguage } from "react-syntax-highlighter/light";
-import js from "react-syntax-highlighter/languages/hljs/javascript";
-import rb from "react-syntax-highlighter/languages/hljs/ruby";
-import java from "react-syntax-highlighter/languages/hljs/java";
-import py from "react-syntax-highlighter/languages/hljs/python";
 
-import { atomOneLight as light } from "react-syntax-highlighter/styles/hljs";
-import { atomOneDark as dark } from "react-syntax-highlighter/styles/hljs";
+// Local imports
+import BlockHeader from "./block-header.js";
+import CodeSample from "./code-sample.js";
+import OutputSample from "./output-sample.js";
 
 // Styles
 import style from "../styles/block.scss";
 
-// Register supported languages
-registerLanguage("js", js);
-registerLanguage("rb", rb);
-registerLanguage("py", py);
-registerLanguage("java", java);
 
 /**
  * Renders the interactive block of code
  */
 export default class Block extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { language: "js" };
+  }
+
+  changeLanguage(id) {
+    this.setState ({ language: id });
+  }
+
   /**
    * Returns the block rendered in its entirity with all
    * interactivity.
@@ -30,26 +31,14 @@ export default class Block extends Component {
   render() {
     return (
       <div className={ style.this.concat(" exploration-demo-block") }>
-        <header>
-          {this.props.description.text}
-        </header>
-        <section className="code">
-          { this.props.code && this.props.code.rb &&
-            <SyntaxHighlighter className="code"
-              language="rb"
-              style={light} >{this.props.code.rb}</SyntaxHighlighter>
-          }
-        </section>
+        <BlockHeader {...this.props}
+          language={this.state.language}
+          changeLanguage={this.changeLanguage.bind(this) }/>
+        <CodeSample {...this.props} language={this.state.language} />
         <section className="bar">
           <span className='active'>Output</span>
         </section>
-        <section className="output">
-          { this.props.output &&
-            <SyntaxHighlighter className="code"
-              language="js"
-              style={dark} >{this.props.output}</SyntaxHighlighter>
-          }
-        </section>
+        <OutputSample {...this.props} language={this.state.language} />
       </div>
     );
   }
