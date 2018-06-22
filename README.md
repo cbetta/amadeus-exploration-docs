@@ -1,9 +1,12 @@
 # Amadeus Exploration Docs
 
-This project contains the code for the Amadeus Exploration Demo in a package of
-less than 50kb.
+This project contains the code for the Amadeus Exploration Demo in a package of less than 50kb.
 
 ![Example](docs/example.png)
+
+## Demo
+
+A live demo is available [here on GitHub](https://amadeus4dev.github.io/amadeus-exploration-docs/). 
 
 ## Usage
 
