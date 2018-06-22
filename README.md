@@ -12,7 +12,7 @@ To use the library apply the following 3 steps to your HTML.
 ```html
 <!-- 1. Load the latest build into the HEAD of your HTML -->
 <head>
-  <script src="exploration-demo.js"></script>
+  <script src="https://amadeus4dev.github.io/amadeus-exploration-docs/exploration-demo.min.js"></script>
 </head>
 
 <!-- 2. Create an HTML element with a class name or ID  -->
