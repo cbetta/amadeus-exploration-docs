@@ -10,6 +10,7 @@
     "output";
   height: 100%;
   background-color: $dark-grey;
+  position: relative;
 
   header {
     font-size: 0.8em;
@@ -66,6 +67,20 @@
       margin-bottom: 0;
       padding: 1em !important;
     }
+  }
+
+  :global(.nextButton) {
+    cursor: pointer;
+    position: absolute;
+    background-color: $blue;
+    color: white;
+    bottom: 1em;
+    right: 1em;
+    z-index: 1;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 0.8em;
   }
 
   @media all and (min-width: 800px) {

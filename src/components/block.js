@@ -2,9 +2,10 @@ import { h, Component } from "preact";
 import Cookie from "js-cookie";
 
 // Local imports
-import BlockHeader from "./block-header.js";
-import CodeSample from "./code-sample.js";
-import OutputSample from "./output-sample.js";
+import BlockHeader from "./block-header";
+import CodeSample from "./code-sample";
+import OutputSample from "./output-sample";
+import NextButton from "./next-button";
 
 // Styles
 import style from "../styles/block.scss";
@@ -49,6 +50,7 @@ export default class Block extends Component {
         <section className="bar">
           <span className='active'>Output</span>
         </section>
+        <NextButton {...this.props} />
         <OutputSample {...this.props} language={this.state.language} />
       </div>
     );
