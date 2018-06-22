@@ -92,6 +92,29 @@ the above config we'd expect the following:
 - code/find.out.json
 ```
 
+## Styling
+
+The default style for the widget is built-in. To add custom styles, the CSS can
+be customised with an additional CSS file. The following basic structure exists
+in the HTML and CSS classes.
+
+```
+div.exploration-demo
+  nav.exploration-demo-steps
+    a
+  section.exploration-demo-blocks
+    section.exploration-demo-block
+      header
+        .description
+        .languages
+          .selected
+          .content
+      section.code
+      section.bar
+      a.nextButton
+      section.output
+```
+
 ## Development
 
 To start the dev server run the `yarn start` command.
