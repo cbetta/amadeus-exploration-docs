@@ -28,7 +28,7 @@
     "webpack-merge": "^4.1.3"
   },
   "scripts": {
-    "clean": "rm -f dist/*",
+    "clean": "rm -f dist/*.js dist/*.gz",
     "build": "webpack --config webpack.prod.js",
     "lint:js": "yarn eslint src/**/*.js",
     "lint:css": "yarn stylelint src/**/*.scss",
