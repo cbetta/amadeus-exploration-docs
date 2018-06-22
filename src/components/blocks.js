@@ -17,7 +17,9 @@ export default class Blocks extends Component {
    * @return {Component} a Preact component
    */
   renderBlock(id, step) {
-    return <Block id={id}
+    return <Block
+      id={id}
+      defaultLanguage={ this.props.defaultLanguage }
       languages={this.props.languages}
       {...step} />;
   }

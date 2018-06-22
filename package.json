@@ -44,6 +44,7 @@
   "license": "MIT",
   "dependencies": {
     "history": "^4.7.2",
+    "js-cookie": "^2.2.0",
     "preact": "^8.2.9",
     "preact-router": "^2.6.1",
     "react-syntax-highlighter": "^7.0.4"

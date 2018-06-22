@@ -1,4 +1,5 @@
 import { h, Component } from "preact";
+import Cookie from "js-cookie";
 
 // Local imports
 import BlockHeader from "./block-header.js";
@@ -15,11 +16,15 @@ import style from "../styles/block.scss";
 export default class Block extends Component {
   constructor(props) {
     super(props);
-    this.state = { language: "js" };
+    let defaultLanguage =
+      Cookie.get("exploration-demo:language") ||
+      props.defaultLanguage;
+    this.state = { language: defaultLanguage };
   }
 
   changeLanguage(id) {
     this.setState ({ language: id });
+    Cookie.set("exploration-demo:language", id);
   }
 
   /**
