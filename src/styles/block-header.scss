@@ -47,8 +47,11 @@
     }
 
     &:global(.hover) {
+      overflow: visible;
+
       div {
         display: block;
+        z-index: 10;
       }
     }
   }

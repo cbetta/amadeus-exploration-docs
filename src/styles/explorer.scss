@@ -3,6 +3,7 @@
 .this {
   display: flex;
   flex-direction: column;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 
   :global(.exploration-demo-steps) {
     flex: 1 100%;

@@ -25,6 +25,11 @@ export default class BlockHeader extends Component {
     };
   }
 
+  toggleCollapsed() {
+    console.log(this.state); // eslint-disable-line
+    this.setCollapsed(!this.state.collapsed)();
+  }
+
   /**
    * Sets the state of the language dropdown using a dynamic
    * CSS class
@@ -62,13 +67,11 @@ export default class BlockHeader extends Component {
       <header className={style.this}>
         <div className='description'>{this.props.description.text}</div>
         <div
-          onMouseEnter={ this.setCollapsed(false).bind(this) }
-          onMouseUp={ this.setCollapsed(false).bind(this) }
-          onMouseLeave={ this.setCollapsed(true).bind(this) }
           className={ this.languagesDropdownClass() }>
 
-          <span className='selected'>
-            &#9662; { this.props.languages[this.props.language] }
+          <span className='selected'
+            onClick={ this.toggleCollapsed.bind(this) }>
+              &#9662; { this.props.languages[this.props.language] }
           </span>
 
           <div className='selection content'>
